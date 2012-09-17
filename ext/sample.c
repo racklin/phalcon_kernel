@@ -59,8 +59,7 @@ PHP_MINIT_FUNCTION(sample){
 	ZEND_INIT_MODULE_GLOBALS(sample, php_phalcon_init_globals, NULL);
 
 	PHALCON_REGISTER_CLASS(Sample, Hello, sample_hello, phalcon_sample_hello_method_entry, 0);
-	zend_declare_property_null(phalcon_sample_hello_ce, SL("_greeting"), ZEND_ACC_PUBLIC TSRMLS_CC);
-	zend_declare_property_bool(phalcon_sample_hello_ce, SL("_isGreeting"), 0, ZEND_ACC_PUBLIC TSRMLS_CC);
+	zend_declare_property_null(phalcon_sample_hello_ce, SL("messages"), ZEND_ACC_PUBLIC TSRMLS_CC);
 
 	return SUCCESS;
 }
