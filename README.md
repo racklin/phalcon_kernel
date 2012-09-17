@@ -27,6 +27,7 @@ Compilation
 -----------
 
 Follow these instructions to generate a binary extension for your platform:
+
      # cd ext/
      # export CFLAGS="-O2 -fno-delete-null-pointer-checks"
      # phpize
