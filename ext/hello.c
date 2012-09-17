@@ -78,3 +78,31 @@ PHP_METHOD(Phalcon_Sample_Hello, addMessage){
         RETURN_CCTOR(message);
 }
 
+PHP_METHOD(Phalcon_Sample_Hello, addMessage2){
+
+        zval *message = NULL;
+        PHALCON_MM_GROW();
+
+        if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "|z", &message) == FAILURE) {
+            PHALCON_MM_RESTORE();
+            RETURN_NULL();
+        }
+
+        if (!message) {
+            PHALCON_INIT_VAR(message);
+            ZVAL_STRING(message, "hello world!", 1);
+        }
+
+        zval *messages = NULL;
+        PHALCON_INIT_VAR(messages);
+
+        phalcon_read_property(&messages, this_ptr, SL("messages"), PH_NOISY_CC);
+        phalcon_array_append(&messages, message, 0 TSRMLS_CC);
+
+
+        phalcon_update_property_zval(this_ptr, SL("messages"), messages TSRMLS_CC);
+
+
+        RETURN_CCTOR(message);
+}
+

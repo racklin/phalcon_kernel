@@ -29,7 +29,23 @@ for ($i =0; $i < 5000; $i++) {
 
 $end1 = microtime(true);
 
-echo "phalcon c version ms = ". ($end1-$start1) . "\n";
+echo "phalcon c  version s = ". ($end1-$start1) . "\n";
+
+// benchmark c-ext version
+
+$start1 = microtime(true);
+
+for ($i =0; $i < 5000; $i++) {
+    $t = new Sample\Hello();
+    for ($j=0; $j < 100; $j++) {
+        $t->addMessage2("test");
+    }
+}
+
+$end1 = microtime(true);
+
+echo "phalcon c2 version s = ". ($end1-$start1) . "\n";
+
 
 // benchmark php version
 
@@ -44,6 +60,6 @@ for ($i =0; $i < 5000; $i++) {
 
 $end2 = microtime(true);
 
-echo "php version ms       = ". ($end2-$start2) . "\n";
+echo "php version        s = ". ($end2-$start2) . "\n";
 
 ?>
