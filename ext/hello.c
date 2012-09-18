@@ -71,11 +71,10 @@ PHP_METHOD(Phalcon_Sample_Hello, addMessage){
         phalcon_read_property(&messages, this_ptr, SL("messages"), PH_NOISY_CC);
         phalcon_array_append(&messages, message, PH_SEPARATE TSRMLS_CC);
 
-
         phalcon_update_property_zval(this_ptr, SL("messages"), messages TSRMLS_CC);
 
+        PHALCON_MM_RESTORE();
 
-        RETURN_CCTOR(message);
 }
 
 PHP_METHOD(Phalcon_Sample_Hello, addMessage2){
@@ -99,10 +98,7 @@ PHP_METHOD(Phalcon_Sample_Hello, addMessage2){
         phalcon_read_property(&messages, this_ptr, SL("messages"), PH_NOISY_CC);
         phalcon_array_append(&messages, message, 0 TSRMLS_CC);
 
+        PHALCON_MM_RESTORE();
 
-        phalcon_update_property_zval(this_ptr, SL("messages"), messages TSRMLS_CC);
-
-
-        RETURN_CCTOR(message);
 }
 
